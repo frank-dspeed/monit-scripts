@@ -1,0 +1,4 @@
+ if failed checksum       then unmonitor
+ if failed permission 755 then unmonitor
+ if failed uid frank       then unmonitor
+ if failed gid frank       then unmonitor
