@@ -7,10 +7,10 @@
    depends on docker_bin
    depends on docker_rc
 
- check file mmonit_bin with path "/urs/bin/docker"
+ check file docker_bin with path "/urs/bin/docker"
    group docker-host
    include /etc/monit/templates/rootbin
 
- check file mmonit_rc with path "/etc/init.d/docker"
+ check file docker_rc with path "/etc/init.d/docker"
    group docker-host
    include /etc/monit/templates/rootbin
