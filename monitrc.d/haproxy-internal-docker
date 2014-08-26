@@ -1,0 +1,13 @@
+check process haproxy with pidfile "/var/run/haproxy_container.docker.pid"
+   group system
+   group docker-host
+   start program = "/etc/init.d/haproxy_container_internal start"
+   stop program  = "/etc/init.d/haproxy_container_internal stop"
+   if 5 restarts within 5 cycles then timeout
+   depends on docker_bin
+   depends on docker_rc
+   depends on haproxy_container_internal_rc
+
+ check file haproxy_container_internal_rc with path "/etc/init.d/docker"
+   group docker-host
+   include /etc/monit/templates/rootbin
