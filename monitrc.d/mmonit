@@ -1,0 +1,17 @@
+ check process mmonit with pidfile "/var/run/mmonit.pid"
+   group system
+   group mmonit
+   start program = "/etc/init.d/mmonit start"
+   stop program  = "/etc/init.d/mmonit stop"
+   if 5 restarts within 5 cycles then timeout
+   depends on mmonit_bin
+   depends on mmonit_rc
+
+ check file mmonit_bin with path "/home/frank/mmonit-server/bin/mmonit"
+   group mmonit
+   include /etc/monit/templates/frankbin
+
+ check file mmonit_rc with path "/etc/init.d/mmonit"
+   group mmonit
+   include /etc/monit/templates/rootbin
+
